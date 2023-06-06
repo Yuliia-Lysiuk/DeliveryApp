@@ -11,7 +11,7 @@ export function AppBar() {
                 < NavList>
                     <NavItem>
                         <NavLinks to="/DeliveryApp">
-                            <NavTitle ><Logo text={false} size="small"/></NavTitle>
+                            <NavTitle ><Logo text={false} size="small"/>Home</NavTitle>
                         </NavLinks>
                     </NavItem>
                     <NavItem>

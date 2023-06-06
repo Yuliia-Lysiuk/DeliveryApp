@@ -60,7 +60,7 @@ export const NavLinks = styled(NavLink)`
 `
 
 export const NavTitle = styled.span`
- display: inline-block;
+ display: flex;
  margin-left: 3px;
 
 `
