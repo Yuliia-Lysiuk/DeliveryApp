@@ -2,6 +2,7 @@ import { Box, CafeName, Image, ItemShop, List, Price, Title,  BoxPrice} from './
 
 import { useSelector } from 'react-redux';
 import Counter from '../Counter/Counter';
+import { Button } from '../Counter/Counter.styled';
 
 
 export default function ShoppingCart() {
@@ -26,6 +27,7 @@ export default function ShoppingCart() {
       ))}
       </List>
       <Title>Total price: {total} грн</Title>
+        <Button>Confirm</Button>
       </> : <Title>Shopping Cart is empty</Title>}
     </Box>
   )
