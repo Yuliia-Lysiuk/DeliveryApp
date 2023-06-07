@@ -13,7 +13,6 @@ export const shoppingCartSlice = createSlice({
         state.items.push({ ...action.payload, qty: 1 });
 
       }else{
-        console.log(action.payload.qty);
         const query = action.payload.qty || 0
         state.items = state.items.map((product) => product.name === action.payload.name ? {...action.payload, qty: query + 1} : product)
       }

@@ -1,17 +1,21 @@
-import { Box, CafeName, Image, ItemShop, List, Price, Title,  BoxPrice} from './ShoppingCart.styled';
+import { Box, CafeName, Image, ItemShop, List, Price, Title,  BoxPrice, Button} from './ShoppingCart.styled';
 
 import { useSelector } from 'react-redux';
 import Counter from '../Counter/Counter';
-import { Button } from '../Counter/Counter.styled';
+import { useState } from 'react';
+import FormDelivery from '../Form/Form';
 
 
 export default function ShoppingCart() {
   const shopping = useSelector((state) => state.shoppingCart.items);
   const total = shopping.reduce((acc, dish) => acc + dish.price*dish.qty, 0);
+  const [userForm, setUserForm] = useState(false)
 
 
   return(
-    <Box>
+   <>
+      {!userForm ?
+        <Box>
       {shopping.length > 0 ? <>
         <Title>Shopping Cart</Title>
       <List>
@@ -27,8 +31,11 @@ export default function ShoppingCart() {
       ))}
       </List>
       <Title>Total price: {total} грн</Title>
-        <Button>Confirm</Button>
-      </> : <Title>Shopping Cart is empty</Title>}
-    </Box>
+        <Button type="button" onClick={()=>setUserForm(true)}>Confirm</Button>
+      </> :
+        <Title>Shopping Cart is empty</Title>}
+        </Box> :
+        <FormDelivery/>}
+   </>
   )
 }

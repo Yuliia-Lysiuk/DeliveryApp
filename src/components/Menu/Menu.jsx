@@ -2,6 +2,7 @@ import { Box, CafeName, Image, ItemShop, List, Price, Weight, Title, BoxFood, Bo
 import menu from '../../data_base/menu_list'
 import { useDispatch, useSelector } from 'react-redux';
 import { increment } from '../../redux/shoppingCartSlice';
+import { toast } from 'react-toastify';
 
 export default function Menu() {
   const shop = useSelector((state) => state.shop.value);
@@ -26,7 +27,19 @@ export default function Menu() {
           <Weight>{dish.weight} г</Weight>
           </BoxPrice>
             </BoxFood>
-          <Button type='button' onClick={()=>incrementFood(dish, index)}>Add to cart</Button>
+          <Button type='button' onClick={()=> {
+            incrementFood(dish, index);
+            toast.success('The product has been added to the cart', {
+              position: "top-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }}>Add to cart</Button>
         </ItemShop>
       ))}
       </List>
