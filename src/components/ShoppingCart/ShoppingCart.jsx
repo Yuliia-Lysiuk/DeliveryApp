@@ -11,9 +11,10 @@ export default function ShoppingCart() {
 
   return(
     <Box>
-      <Title>ShoppingCart</Title>
+      {shopping.length > 0 ? <>
+        <Title>Shopping Cart</Title>
       <List>
-      {shopping && shopping.map((dish)=>(
+      { shopping.map((dish)=>(
         <ItemShop key={dish.name}>
           <Image src={dish.url} alt={dish.name}/>
           <BoxPrice>
@@ -25,6 +26,7 @@ export default function ShoppingCart() {
       ))}
       </List>
       <Title>Total price: {total} грн</Title>
+      </> : <Title>Shopping Cart is empty</Title>}
     </Box>
   )
 }

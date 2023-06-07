@@ -1,4 +1,4 @@
-export default {"Pasta e Vino": [
+ const menu ={"Pasta e Vino": [
     {name: "Брі", price: 58, weight: 50, url: "https://nssz.com.ua/image/cache/catalog/other_cheeses/slider_images/Brie/1-750x450.jpg"},
     {name: "Салат з аспарагусом", price: 138, weight: 210, url: "https://confetti.ua/wp-content/uploads/salat-sayt.jpg"},
     {name: "Салат з пряним ростбіфом", price: 168, weight: 240, url: "https://s1.eda.ru/StaticContent/Photos/120214133254/120727184210/p_O.jpg"},
@@ -92,3 +92,5 @@ export default {"Pasta e Vino": [
       url: 'https://confetti.ua/wp-content/uploads/salat-sayt.jpg'
     },
   ]}
+
+ export default menu

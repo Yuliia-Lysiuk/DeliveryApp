@@ -27,13 +27,6 @@ display: flex;
   &:not(:last-child){
     margin-bottom: 20px;
   };
-  //&:hover {
-  //  box-shadow: inset 0px -8px 10px 0px #97bdb6, 0px -8px 10px 0px #97bdb6;
-  //  color: #8f0000;
-  //  scale: 1.05;
-  //  transition-duration: 300ms;
-  //  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  //}
 `
 export const CafeName = styled.p`
  font-size: 28px;
@@ -58,28 +51,10 @@ export const Title = styled.h1`
   text-shadow: #f3c4c4 2px 0 2px;
 margin-bottom: 20px;
 `
-export const BoxFood = styled.div`
-min-width: 800px;
-`
 export const BoxPrice = styled.div`
  display: flex;
   flex-direction: column;
 justify-content: space-between;
   width: 240px;
 `
-export const Button = styled.button`
-  padding: 5px 50px;
-  background: #a14545;
-  cursor: pointer;
-  border: 1px solid #6e1c1c;
-  font-size: 18px;
-  border-radius: 5px;
-  margin-top: 20px;
 
-  &:hover {
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    border: 1px solid #6e1c1c;
-    transition-duration: 300ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-`

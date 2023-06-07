@@ -1,11 +1,9 @@
 
-import { LogoText, LogoImg,  LogoBox, Circle } from './Logo.styled'
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { decrement, increment } from '../../redux/shoppingCartSlice';
+import { Button } from './Counter.styled';
 
 export default function Counter({dish}) {
-  const shopping = useSelector((state) => state.shoppingCart.items);
   const dispatch = useDispatch();
   function incrementFood(){
     dispatch(increment(dish));
@@ -17,13 +15,12 @@ export default function Counter({dish}) {
 
   return (
     <div>
-    <button type='button' onClick={() => decrementFood()} disabled={dish.qty < 1}>
+    <Button type='button' onClick={() => decrementFood()} disabled={dish.qty < 1}>
       -
-    </button>
-    <span>{ dish.qty}</span>
-    <button type='button' onClick={() => incrementFood()} disabled={dish.qty > 9}>
+    </Button>
+    <Button type='button' onClick={() => incrementFood()} disabled={dish.qty > 9}>
       +
-    </button>
+    </Button>
   </div>
 )
 }
