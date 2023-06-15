@@ -1,28 +1,21 @@
 import styled from 'styled-components';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { GiShoppingCart } from 'react-icons/gi';
 
+export const HeaderBox = styled.div`
+  position: relative;
+`;
 
 export const Header = styled.header`
   background-color: #267486;
   box-shadow: inset 0px -8px 10px 0px #97bdb6;
-  position: fixed;
-min-width: 100vw;
-  min-height: 11vh;
-`
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+`;
 
-export const MainNav = styled.nav`
-@media only screen and (max-width: 480px)
-{
-   padding: 0 5px;
-}
-max-width: 900px;
-margin: auto;
-  display:flex;
-  justify-content: space-between;
-  /* padding: 15px 20px; */
-align-items:center;
-  height:10vh;
-`
+export const MainNav = styled.nav``;
 
 export const NavList = styled.ul`
   @media only screen and (max-width: 480px) {
@@ -31,24 +24,20 @@ export const NavList = styled.ul`
   font-size: 30px;
   color: #ee5252;
   display: flex;
-`
+`;
 
 export const NavItem = styled.li`
-@media  (max-width: 480px)
-{
-   &:not(:last-child) {
-      margin-right:5px;
+  @media (max-width: 480px) {
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
   }
-}
-@media  (min-width: 481px)
-{
-  &:not(:last-child) {
-      margin-right:50px;
+  @media (min-width: 481px) {
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
   }
-}
-
-
-`
+`;
 export const NavLinks = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -57,11 +46,30 @@ export const NavLinks = styled(NavLink)`
     color: #761515;
     font-weight: bold;
   }
-`
+`;
 
 export const NavTitle = styled.span`
- display: flex;
- margin-left: 3px;
+  display: flex;
+  margin-left: 3px;
+`;
 
-`
+export const Icon = styled(GiShoppingCart)`
+  width: 50px;
+  height: 50px;
+  color: #ff0000;
+  display: block;
+`;
 
+export const Count = styled.div`
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  color: #ff0000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #026677;
+  box-shadow: 0px 0px 10px 0px #97bdb6;
+`;

@@ -1,21 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Box = styled.div`
-display: grid;
+  display: grid;
   grid-template-columns: 2fr 6fr;
   grid-column-gap: 20px;
   justify-content: center;
-  padding: 50px 0;
-`
+  padding: 50px 200px;
+`;
 
 export const MenuBox = styled.div`
-  width: 100%;
-  height: 70vh;
   background: #2c7c75;
   border-radius: 70px;
   border: medium inset #6b98a6;
-`
-
+`;
 
 export const ShopsBox = styled.div`
   display: flex;
@@ -23,6 +20,5 @@ export const ShopsBox = styled.div`
   align-items: center;
   background: #8ec5b6;
   border-radius: 70px;
-  border:   medium inset lightblue;
-
-`
+  border: medium inset lightblue;
+`;
