@@ -6,12 +6,12 @@ import {
   NavLinks,
   NavTitle,
   Header,
-  HeaderBox,
   Icon,
   Count,
 } from './AppBar.styled';
 import Logo from '../Logo/Logo';
 import { useSelector } from 'react-redux';
+import { AiFillShop } from 'react-icons/ai';
 
 export function AppBar() {
   const shopping = useSelector(state => state.shoppingCart.items);
@@ -31,20 +31,23 @@ export function AppBar() {
             </NavItem>
             <NavItem>
               <NavLinks to="/shops">
-                <NavTitle>Shops</NavTitle>
+                <NavTitle>
+                  Shops
+                  <AiFillShop />
+                </NavTitle>
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="/shoppingCart">
-                <NavTitle>Shopping Cart</NavTitle>
+                <NavTitle>
+                  Shopping Cart
+                  <Count>{shopping.length}</Count>
+                  <Icon />
+                </NavTitle>
               </NavLinks>
             </NavItem>
           </NavList>
         </MainNav>
-        <HeaderBox>
-          <Count>{shopping.length}</Count>
-          <Icon />
-        </HeaderBox>
       </Header>
       <Outlet />
     </>

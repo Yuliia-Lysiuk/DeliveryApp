@@ -11,15 +11,32 @@ import {
   Icon,
 } from './ShoppingCart.styled';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Counter from '../Counter/Counter';
 import { useState } from 'react';
 import FormDelivery from '../Form/Form';
+import { useEffect } from 'react';
+import { save } from 'redux/shoppingCartSlice';
 
 export default function ShoppingCart() {
   const shopping = useSelector(state => state.shoppingCart.items);
   const total = shopping.reduce((acc, dish) => acc + dish.price * dish.qty, 0);
   const [userForm, setUserForm] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('shopping'));
+    if (items) {
+      dispatch(save(items));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (shopping.length > 0) {
+      localStorage.setItem('shopping', JSON.stringify(shopping));
+    }
+  }, [shopping]);
 
   return (
     <>

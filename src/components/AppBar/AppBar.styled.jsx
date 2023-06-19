@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { GiShoppingCart } from 'react-icons/gi';
 
-export const HeaderBox = styled.div`
-  position: relative;
-`;
-
 export const Header = styled.header`
   background-color: #267486;
   box-shadow: inset 0px -8px 10px 0px #97bdb6;
@@ -50,22 +46,26 @@ export const NavLinks = styled(NavLink)`
 
 export const NavTitle = styled.span`
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 3px;
+  position: relative;
 `;
 
 export const Icon = styled(GiShoppingCart)`
-  width: 50px;
-  height: 50px;
-  color: #ff0000;
+  width: 45px;
+  height: 45px;
+
   display: block;
 `;
 
 export const Count = styled.div`
   position: absolute;
   right: 0;
+  top: 0;
   width: 20px;
   height: 20px;
-  color: #ff0000;
+  font-size: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
