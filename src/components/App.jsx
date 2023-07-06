@@ -12,6 +12,7 @@ const ShopsPage = lazy(() => import('../page/ShopsPage/ShopsPage'));
 const ShoppingCartPage = lazy(() =>
   import('../page/ShoppingCartPage/ShoppingCartPage')
 );
+const HistoryPage = lazy(() => import('../page/HistoryPage/HistoryPage'));
 
 export const App = () => {
   return (
@@ -27,6 +28,7 @@ export const App = () => {
               <Route path="/DeliveryApp" element={<HomePage />} />
               <Route path="/shops" element={<ShopsPage />} />
               <Route path="/shoppingCart" element={<ShoppingCartPage />} />
+              <Route path="/history" element={<HistoryPage />} />
             </Routes>
           </Suspense>
         </Container>

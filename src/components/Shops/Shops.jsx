@@ -12,7 +12,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { reset } from 'redux/shoppingCartSlice';
 
 export default function Shops() {
-  const [indexShop, setIndexShop] = useState(0);
   const [open, setOpen] = useState(false);
   const [activeShop, setActiveShop] = useState(null);
   const dispatch = useDispatch();
@@ -23,19 +22,17 @@ export default function Shops() {
     setOpen(false);
   };
 
-  function changeShop(name, ind) {
+  function changeShop(name) {
     if (shopping.length > 0 && name !== shop) {
       setOpen(true);
-      setActiveShop({ name, ind });
+      setActiveShop(name);
     } else {
       dispatch(chooseShop(name));
-      setIndexShop(ind);
     }
   }
 
   function removeShoppingCart() {
-    dispatch(chooseShop(activeShop.name));
-    setIndexShop(activeShop.ind);
+    dispatch(chooseShop(activeShop));
     dispatch(reset());
     handleClose();
   }
@@ -45,11 +42,11 @@ export default function Shops() {
       <Title>Shops</Title>
       <List>
         {shops &&
-          shops.map(({ name, img }, index) => (
+          shops.map(({ name, img }) => (
             <ItemShop
-              $color={index === indexShop}
+              $color={name === shop}
               key={name}
-              onClick={() => changeShop(name, index)}
+              onClick={() => changeShop(name)}
             >
               <Image src={img} alt={name} />
               <CafeName>{name}</CafeName>

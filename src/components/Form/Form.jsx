@@ -1,27 +1,36 @@
 import { validationSchema } from './validationSchema';
 import { BoxButton, Form } from './Form.styled';
 import { useFormik } from 'formik';
-import { CastomTextField } from './Input.styled';
-import { Btn } from './Button.styled';
+import Button from '../Button/Button';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { reset } from 'redux/shoppingCartSlice';
+import Input from 'components/Input/Input';
 
-export default function FormDelivery() {
+export default function FormDelivery({ address }) {
   const shopping = useSelector(state => state.shoppingCart.items);
   const dispatch = useDispatch();
 
-  async function createOrder(userInfo) {
+  async function createOrder(userInfo, resetForm) {
     try {
+      if (!address) {
+        toast.error('Please, enter your address', {
+          position: 'top-center',
+          autoClose: 3000,
+          theme: 'colored',
+        });
+        return;
+      }
       const response = await fetch(`http://localhost:4000/api/users`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...userInfo, order: shopping }),
+        body: JSON.stringify({ ...userInfo, address, order: shopping }),
       });
       let { message } = await response.json();
 
       if (response.status === 201) {
+        resetForm();
         toast.success('Order successfully created!', {
           position: 'top-center',
           autoClose: 3000,
@@ -53,14 +62,13 @@ export default function FormDelivery() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      createOrder(values);
-      resetForm();
+      createOrder(values, resetForm);
     },
   });
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <CastomTextField
+      <Input
         id="name"
         name="name"
         type="text"
@@ -70,7 +78,7 @@ export default function FormDelivery() {
         error={formik.touched.name && Boolean(formik.errors.name)}
         helperText={formik.touched.name && formik.errors.name}
       />
-      <CastomTextField
+      <Input
         id="email"
         name="email"
         type="email"
@@ -80,7 +88,8 @@ export default function FormDelivery() {
         error={formik.touched.email && Boolean(formik.errors.email)}
         helperText={formik.touched.email && formik.errors.email}
       />
-      <CastomTextField
+
+      <Input
         id="phone"
         name="phone"
         type="phone"
@@ -90,20 +99,8 @@ export default function FormDelivery() {
         error={formik.touched.phone && Boolean(formik.errors.phone)}
         helperText={formik.touched.phone && formik.errors.phone}
       />
-      <CastomTextField
-        id="address"
-        name="address"
-        type="address"
-        label="Address *"
-        value={formik.values.address}
-        onChange={formik.handleChange}
-        error={formik.touched.address && Boolean(formik.errors.address)}
-        helperText={formik.touched.address && formik.errors.address}
-      />
       <BoxButton>
-        <Btn variant="contained" type="submit">
-          "Submit"
-        </Btn>
+        <Button type="submit" text="Submit" />
       </BoxButton>
     </Form>
   );

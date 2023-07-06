@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Box = styled.div`
-  padding: 25px;
-  height: 590px;
+  height: 70vh;
   overflow-y: scroll;
   scroll-behavior: auto;
 

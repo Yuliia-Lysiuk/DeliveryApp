@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 export const LogoText = styled.p`
   @media only screen and (max-width: 480px) {
     font-size: 20px;
   }
-  font-size: 46px;
+  font-size: 76px;
   color: #be7756;
   text-shadow: #645e5e 4px 1px 2px, #161616 6px 3px 2px;
 `;

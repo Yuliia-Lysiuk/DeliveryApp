@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Box = styled.div`
   padding: 20px;
@@ -65,6 +65,7 @@ export const Title = styled.h1`
   font-size: 26px;
   color: #363b39;
   text-shadow: #f3c4c4 2px 0 2px;
+  margin-bottom: 10px;
 `;
 export const BoxFood = styled.div`
   min-width: 250px;

@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
   margin: 0 auto;
-  /* padding: 100px 200px; */
-  background: #195050;
-  height: 80vh;
+  background: #232424;
+  min-height: 87vh;
 `;

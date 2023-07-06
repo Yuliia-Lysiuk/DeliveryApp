@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { GiShoppingCart } from 'react-icons/gi';
 
 export const Box = styled.div`
@@ -10,7 +10,7 @@ export const Box = styled.div`
   border-radius: 70px;
   border: medium inset #6b98a6;
   padding: 20px;
-  height: 590px;
+  height: 78vh;
 `;
 
 export const List = styled.ul`
@@ -104,4 +104,15 @@ export const Icon = styled(GiShoppingCart)`
   height: 300px;
   color: #8d4b4b;
   display: block;
+`;
+
+export const BoxForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #2c7c75;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  border: medium inset #6b98a6;
+  width: 50vw;
+  height: 80vh;
 `;

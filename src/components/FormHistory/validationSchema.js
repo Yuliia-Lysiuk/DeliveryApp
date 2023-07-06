@@ -1,11 +1,6 @@
 import * as yup from 'yup';
 
 export const validationSchema = yup.object({
-  name: yup
-    .string('Enter your name')
-    .min(3, 'Name should be of min 3 characters length')
-    .max(254, 'Name should be of max 254 characters length')
-    .required('Name is required'),
   email: yup
     .string('Enter your email')
     .min(3, 'Email should be of min 3 characters length')

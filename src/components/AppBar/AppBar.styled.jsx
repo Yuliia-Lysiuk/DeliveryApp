@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import { GiShoppingCart } from 'react-icons/gi';
 
 export const Header = styled.header`
-  background-color: #267486;
-  box-shadow: inset 0px -8px 10px 0px #97bdb6;
-  min-height: 10vh;
+  background-color: ${props => (props.$theme ? '#267486' : '#12a8ff')};
+  box-shadow: inset 0px -8px 10px 0px #c8d6cb;
+  min-height: 8vh;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -18,7 +18,8 @@ export const NavList = styled.ul`
     font-size: 16px;
   }
   font-size: 30px;
-  color: #ee5252;
+  color: #074110;
+  text-shadow: #91ff00 1px 0 4px;
   display: flex;
 `;
 
@@ -38,8 +39,13 @@ export const NavLinks = styled(NavLink)`
   display: flex;
   align-items: center;
 
+  &:hover {
+    color: #ce6e14;
+    scale: 1.1;
+  }
+
   &.active {
-    color: #761515;
+    color: #ce6e14;
     font-weight: bold;
   }
 `;

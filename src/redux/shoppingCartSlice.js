@@ -41,10 +41,16 @@ export const shoppingCartSlice = createSlice({
     save: (state, action) => {
       state.items = action.payload;
     },
+    remove: (state, action) => {
+      state.items = state.items.filter(
+        item => item.name !== action.payload.name
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, reset, save } = shoppingCartSlice.actions;
+export const { increment, decrement, reset, save, remove } =
+  shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;

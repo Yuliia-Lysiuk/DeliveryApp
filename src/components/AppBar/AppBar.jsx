@@ -10,15 +10,21 @@ import {
   Count,
 } from './AppBar.styled';
 import Logo from '../Logo/Logo';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillShop } from 'react-icons/ai';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { MaterialUISwitch } from './SwitchTheme';
+import { changeTheme } from 'redux/themeSlice';
+import { BsCardChecklist } from 'react-icons/bs';
 
 export function AppBar() {
   const shopping = useSelector(state => state.shoppingCart.items);
+  const theme = useSelector(state => state.theme.value);
+  const dispatch = useDispatch();
 
   return (
     <>
-      <Header>
+      <Header $theme={theme}>
         <MainNav>
           <NavList>
             <NavItem>
@@ -46,8 +52,25 @@ export function AppBar() {
                 </NavTitle>
               </NavLinks>
             </NavItem>
+            <NavItem>
+              <NavLinks to="/history">
+                <NavTitle>
+                  History
+                  <BsCardChecklist />
+                </NavTitle>
+              </NavLinks>
+            </NavItem>
           </NavList>
         </MainNav>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              defaultChecked
+              onChange={() => dispatch(changeTheme())}
+            />
+          }
+        />
       </Header>
       <Outlet />
     </>

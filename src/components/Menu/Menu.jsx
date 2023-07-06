@@ -9,13 +9,12 @@ import {
   Title,
   BoxFood,
   BoxPrice,
-  Button,
 } from './Menu.styled';
 import menu from '../../data_base/menu_list';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment } from '../../redux/shoppingCartSlice';
+import { increment, remove } from '../../redux/shoppingCartSlice';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
+import Button from 'components/Button/Button';
 
 export default function Menu() {
   const shop = useSelector(state => state.shop.value);
@@ -36,16 +35,26 @@ export default function Menu() {
     });
   }
 
-  useEffect(() => {
-    localStorage.setItem('shopping', JSON.stringify(shopping));
-  }, [shopping]);
+  function decrementFood(dish) {
+    dispatch(remove(dish));
+    toast.success('The product has been remove from the cart', {
+      position: 'top-center',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  }
 
   return (
     <Box>
       <Title>Menu</Title>
       <List>
         {menu &&
-          menu[shop].map((dish, index) => (
+          menu[shop].map(dish => (
             <ItemShop key={dish.name}>
               <Image src={dish.url} alt={dish.name} />
               <BoxFood>
@@ -55,14 +64,21 @@ export default function Menu() {
                   <Weight>{dish.weight} г</Weight>
                 </BoxPrice>
               </BoxFood>
-              <Button
-                type="button"
-                onClick={() => {
-                  incrementFood(dish);
-                }}
-              >
-                Add to cart
-              </Button>
+              {shopping && !shopping.some(obj => obj.name === dish.name) ? (
+                <Button
+                  onClick={() => {
+                    incrementFood(dish);
+                  }}
+                  text="Add to cart"
+                />
+              ) : (
+                <Button
+                  onClick={() => {
+                    decrementFood(dish);
+                  }}
+                  text="Remove from cart"
+                />
+              )}
             </ItemShop>
           ))}
       </List>
