@@ -13,11 +13,3 @@ export const validationSchema = yup.object({
     // .max(13, 'Phone should be of max 13 characters length')
     .required('Phone is required'),
 });
-
-export const validationSchemaDistance = yup.object({
-  address: yup
-    .string('Enter your address')
-    .min(3, 'address should be of min 3 characters length')
-    .max(254, 'address should be of max 254 characters length')
-    .required('address is required'),
-});

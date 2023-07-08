@@ -1,21 +1,9 @@
-import {
-  Box,
-  CafeName,
-  Image,
-  ItemShop,
-  List,
-  Price,
-  Title,
-  BoxPrice,
-  Button,
-  Icon,
-  BoxForm,
-} from './ShoppingCart.styled';
+import { Box, Title, Button, Icon, BoxForm } from './ShoppingCart.styled';
 import { useSelector } from 'react-redux';
-import Counter from '../Counter/Counter';
 import { useState } from 'react';
 import FormDelivery from '../Form/Form';
 import Map from 'components/Map/Map';
+import DishesList from 'components/DishesList/DishesList';
 
 export default function ShoppingCart() {
   const shopping = useSelector(state => state.shoppingCart.items);
@@ -30,20 +18,7 @@ export default function ShoppingCart() {
           {shopping.length > 0 ? (
             <>
               <Title>Shopping Cart</Title>
-              <List>
-                {shopping.map(dish => (
-                  <ItemShop key={dish.name}>
-                    <Image src={dish.url} alt={dish.name} />
-                    <BoxPrice>
-                      <CafeName>{dish.name}</CafeName>
-                      <Price>
-                        {dish.qty} * {dish.price} грн
-                      </Price>
-                      <Counter dish={dish} />
-                    </BoxPrice>
-                  </ItemShop>
-                ))}
-              </List>
+              <DishesList shopping={shopping} counter={true} />
               <Title>Total price: {total} грн</Title>
               <Button type="button" onClick={() => setUserForm(true)}>
                 Confirm
